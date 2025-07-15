@@ -1,0 +1,23 @@
+body{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.main-frame-menu-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title{
+  font-size: xx-large;
+  margin: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.menu{
+  height: auto;
+  width: 500px;
+  padding: 20px;
+  border-bottom: 2px solid lightgray;
+  padding-left: 120px;
+}

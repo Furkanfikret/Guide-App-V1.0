@@ -1,0 +1,8 @@
+/* ContactList.css */
+.table-header {
+  background-color: #747f89;
+  color: rgb(219, 222, 215);
+  font-weight: bolder;
+  font-size: 1.1rem;
+  text-transform: uppercase; /* Başlıkları büyük harfe çevirir */
+}
