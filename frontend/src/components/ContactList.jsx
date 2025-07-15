@@ -7,13 +7,15 @@ import { useNavigate } from "react-router-dom";
 import  '../css/ContactList.css';
 import { MdModeEdit } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
+
+const backend_api_url = 'https://guide-app-v1-0.onrender.com';
 function ContactList() {
   const navigate = useNavigate();
   // useState'e arama ekle
   const [searchTerm, setSearchTerm] = useState("");
   const [users, setUsers] = useState([]);
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3000/delete_user/${id}`)
+    axios.delete(`${backend_api_url}/${id}`)
       .then(()=>{
         setUsers(users.filter(user => user.id !== id))
       })
@@ -24,7 +26,7 @@ function ContactList() {
     navigate(`/update_user/${id}`);
   };
   useEffect(() => {
-    axios.get("http://localhost:3000/show_all_users")
+    axios.get(`${backend_api_url}/show_all_users`)
       .then(res => setUsers(res.data.users))
       //res bir obje ve data key inde axios un verielri var
       //res.data = {users:[{},{},{},...]} gibi her bir user ı içeren bir object
@@ -32,7 +34,7 @@ function ContactList() {
       .catch(err => console.error("Error fetching users:", err));
   }, []);
   useEffect(() => {
-  axios.get(`http://localhost:3000/show_all_users?arama=${searchTerm}`)
+  axios.get(`${backend_api_url}/show_all_users?arama=${searchTerm}`)
     .then(res => setUsers(res.data.users))
     .catch(err => console.error("Error fetching users:", err));
   }, [searchTerm]);

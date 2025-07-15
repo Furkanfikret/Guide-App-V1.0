@@ -4,6 +4,8 @@ import axios from "axios";
 import { TextField, Button, Paper, Typography, RadioGroup, FormControlLabel, Radio, FormLabel, FormControl } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+const backend_api_url = 'https://guide-app-v1-0.onrender.com';
+
 function UpdateUser() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -16,7 +18,7 @@ function UpdateUser() {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/show_all_users/${id}`)
+    axios.get(`${backend_api_url}/show_all_users/${id}`)
       .then(res => setUser(res.data.user))
       .catch(err => console.error(err));
   }, [id]);
@@ -31,7 +33,7 @@ function UpdateUser() {
       alert("Lütfen tüm zorunlu alanları doldurun.");
       return;
   }
-    axios.put(`http://localhost:3000/update_user/${id}`, user)
+    axios.put(`${backend_api_url}/update_user/${id}`, user)
       .then(() =>{
         alert("Kullanıcı güncellendi");
         navigate("/contacts"); // otomatik geri dönüş
