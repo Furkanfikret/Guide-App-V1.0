@@ -4,7 +4,7 @@ import axios from "axios";
 import { TextField, Button, Paper, Typography, RadioGroup, FormControlLabel, Radio, FormLabel, FormControl } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const backend_api_url = 'https://guide-app-v1-0.onrender.com';
+const backend_api_url = import.meta.env.VITE_API_URL;
 
 function UpdateUser() {
   const navigate = useNavigate();

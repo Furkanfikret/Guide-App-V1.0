@@ -8,7 +8,7 @@ import  '../css/ContactList.css';
 import { MdModeEdit } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 
-const backend_api_url = 'https://guide-app-v1-0.onrender.com';
+const backend_api_url = import.meta.env.VITE_API_URL;
 function ContactList() {
   const navigate = useNavigate();
   // useState'e arama ekle
