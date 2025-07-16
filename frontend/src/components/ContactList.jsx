@@ -15,9 +15,9 @@ function ContactList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [users, setUsers] = useState([]);
   const handleDelete = (id) => {
-    axios.delete(`${backend_api_url}/${id}`)
+    axios.delete(`${backend_api_url}/delete_user/${id}`)
       .then(()=>{
-        setUsers(users.filter(user => user.id !== id))
+        setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
       })
       .catch(error => console.log(error))
   }

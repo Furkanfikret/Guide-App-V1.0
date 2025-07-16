@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -14,7 +15,10 @@ import {
   Typography
 } from '@mui/material';
 
+const backend_api_url = import.meta.env.VITE_API_URL;
+
 function AddPerson({onCancel}) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
@@ -35,14 +39,14 @@ function AddPerson({onCancel}) {
     e.preventDefault();
     
     // burada veriyi işleyebilirsin
-    const response = await axios.post("http://localhost:3000/users",formData);
+    const response = await axios.post(`${backend_api_url}/users`,formData);
     setServerMessage(response.data.message);
     setFormData({name: '',
     surname: '',
     phone: '',
     gender: '',
     note: ''});
-    
+    navigate("/contacts"); // otomatik geri dönüş
     
   };
 

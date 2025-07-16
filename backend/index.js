@@ -67,6 +67,19 @@ app.delete("/delete_user/:id",async(req,res)=>{
     res.status(500).json({error:`Èrror deleting user of id=${id}`})
   }
 })
+app.get("/get_users/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Kullanıcı bulunamadı" });
+    }
+    res.status(200).json({ user: result.rows[0] });
+  } catch (error) {
+    console.error("Kullanıcı getirme hatası:", error);
+    res.status(500).json({ error: "Sunucu hatası" });
+  }
+});
 
 app.put("/update_user/:id", (req, res) => {
   const { id } = req.params;

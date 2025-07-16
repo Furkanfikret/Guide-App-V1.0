@@ -18,7 +18,7 @@ function UpdateUser() {
   });
 
   useEffect(() => {
-    axios.get(`${backend_api_url}/show_all_users/${id}`)
+    axios.get(`${backend_api_url}/get_users/${id}`)
       .then(res => setUser(res.data.user))
       .catch(err => console.error(err));
   }, [id]);
